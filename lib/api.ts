@@ -33,7 +33,7 @@ export async function fetchTopHeadlines(
     });
     // console.log("Response:", JSON.stringify(data, null, 2));
 
-    // NewsAPI 응답을 우리 타입으로 변환
+    // 응답 Custom
     return data.articles.map((article: any, index: number) => ({
       id: `${article.publishedAt}-${index}`,
       title: article.title,
