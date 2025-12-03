@@ -3,12 +3,12 @@ export interface NewsArticle {
   title: string;
   description: string;
   content: string;
-  author: string;
+  author: string | null;
   source: string;
   url: string;
-  imageUrl: string;
+  imageUrl: string | null;
   publishedAt: string;
-  category: string;
+  category?: string;
 }
 
 export type NewsCategory =
@@ -17,4 +17,5 @@ export type NewsCategory =
   | "business"
   | "sports"
   | "entertainment"
-  | "health";
+  | "health"
+  | "science";

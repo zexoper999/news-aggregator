@@ -1,7 +1,8 @@
 import NewsList from "@/components/news/NewsList";
-import { dummyNews } from "@/lib/dummyData";
+import { fetchTopHeadlines } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
+  const articles = await fetchTopHeadlines("us");
   return (
     <main className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm">
@@ -13,7 +14,8 @@ export default function Home() {
         </div>
       </header>
 
-      <NewsList articles={dummyNews} />
+      {/* 뉴스 목록 */}
+      <NewsList articles={articles} />
     </main>
   );
 }
