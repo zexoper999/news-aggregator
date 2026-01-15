@@ -179,5 +179,3 @@ export default function SearchBar() {
 - [ ] 무한 스크롤 또는 페이지네이션
 - [ ] 다크 모드 지원
 - [ ] 북마크 기능 (LocalStorage)
-- [ ] 뉴스 소스 필터링
-- [ ] PWA 변환 (오프라인 지원)
