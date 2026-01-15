@@ -10,7 +10,9 @@ export default async function Home({ searchParams }: HomeProps) {
   const query = searchParams.q;
 
   // 검색어가 있으면 검색, 없으면 헤드라인
-  const articles = query ? await searchNews(query) : await fetchTopHeadlines("us");
+  const articles = query
+    ? await searchNews(query)
+    : await fetchTopHeadlines("us");
 
   const title = query ? `"${query}" 검색 결과` : "최신 뉴스";
   const resultCount = query ? `${articles.length}개 발견` : "";
@@ -23,7 +25,7 @@ export default async function Home({ searchParams }: HomeProps) {
             📰 News Aggregator
           </h1>
 
-          {/* 검색바 추가 */}
+          {/* 검색바 */}
           <SearchBar />
 
           <div className="mt-4 flex items-center gap-2">
