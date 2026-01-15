@@ -26,14 +26,8 @@ export async function fetchTopHeadlines(
     }
 
     const data = await response.json();
-    console.log("✅ API Response:", {
-      status: data.status,
-      totalResults: data.totalResults,
-      articlesCount: data.articles?.length || 0,
-    });
-    // console.log("Response:", JSON.stringify(data, null, 2));
 
-    // 응답 Custom
+    // NewsAPI 응답을 우리 타입으로 변환
     return data.articles.map((article: any, index: number) => ({
       id: `${article.publishedAt}-${index}`,
       title: article.title,
@@ -56,7 +50,7 @@ export async function searchNews(query: string): Promise<NewsArticle[]> {
   try {
     const url = `${BASE_URL}/everything?q=${encodeURIComponent(
       query
-    )}&apiKey=${API_KEY}&language=ko`;
+    )}&apiKey=${API_KEY}&language=en&sortBy=publishedAt&pageSize=50`;
 
     const response = await fetch(url, {
       next: { revalidate: 3600 },
@@ -80,7 +74,7 @@ export async function searchNews(query: string): Promise<NewsArticle[]> {
       publishedAt: article.publishedAt,
     }));
   } catch (error) {
-    console.error("Failed to search news:", error);
+    console.error("❌ Failed to search news:", error);
     return [];
   }
 }
